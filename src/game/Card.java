@@ -1,3 +1,5 @@
+package game;
+
 public class Card {
     private String color;
     private String value;
