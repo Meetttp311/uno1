@@ -1,34 +1,41 @@
-package game;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-public class Player {
-    private String name;
-    private List<Card> hand;
+public class GroupOfCards {
+    private List<Card> cards;
 
-    public Player(String name) {
-        this.name = name;
-        hand = new ArrayList<>();
+    public GroupOfCards() {
+        cards = new ArrayList<>();
     }
 
-    public String getName() {
-        return name;
+    public void addCard(Card card) {
+        cards.add(card);
     }
 
-    public void addCardToHand(Card card) {
-        hand.add(card);
+    public void addCards(List<Card> newCards) {
+        cards.addAll(newCards);
     }
 
-    public List<Card> getHand() {
-        return hand;
+    public int getSize() {
+        return cards.size();
     }
 
-    public int getHandSize() {
-        return hand.size();
+    public Card drawCard() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.remove(cards.size() - 1);
     }
 
-    public Card playCard(int index) {
-        return hand.remove(index);
+    public Card getTopCard() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.get(cards.size() - 1);
+    }
+
+    public void shuffle() {
+        Collections.shuffle(cards);
     }
 }
